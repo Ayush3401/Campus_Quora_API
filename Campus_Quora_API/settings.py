@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'posts',
-
+    'user',
+    'categories',
+    
     'rest_framework',
 ]
 SIMPLE_JWT = {

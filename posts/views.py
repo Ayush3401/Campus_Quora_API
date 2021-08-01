@@ -153,6 +153,14 @@ class ParticularCommunityView(APIView):
         except:
             return Response({"error": f"Community with id : {community_id} does not exist "}, status=status.HTTP_400_BAD_REQUEST)
 
+    def post(self, request, community_id):
+        try:
+            community = Community.objects.get(pk=community_id)
+            community.users.add(request.user)
+            return Response({"Success: User Added"}, status = status.HTTP_200_OK) 
+        except:
+            return Response({"error": f"Community with id : {community_id} does not exist "}, status=status.HTTP_400_BAD_REQUEST)
+
 
 class QuestionView(APIView):
     permission_classes = (IsAuthenticated,)
